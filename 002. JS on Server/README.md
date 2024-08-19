@@ -36,4 +36,4 @@ Adherence to ECMAScript ensures that JavaScript code behaves the same way across
 
 ## 🌐 Links
 
-[Written notes for episode 2](https://drive.google.com/file/d/1QkKkE_9bOj4P8B8iqhRoEp6Qk003-Hdu/view?usp=drive_link)
+[WRITTEN NOTES](https://drive.google.com/drive/folders/1QIc3sQdEhRf9X6LEYXfJfNLNDLTkZjhO?usp=drive_link)
