@@ -33,3 +33,7 @@ Adherence to ECMAScript ensures that JavaScript code behaves the same way across
 ## ⭐ V8 Engine is a C++ code?
 
 ![demo](../assests/demo1.png)
+
+## 🌐 Links
+
+[Written notes for episode 2](https://drive.google.com/file/d/1QkKkE_9bOj4P8B8iqhRoEp6Qk003-Hdu/view?usp=drive_link)
