@@ -114,3 +114,12 @@ console.log(this);
 * So, finally **OpenJS Foundation** comes up with **`globalThis`** and **`globalThis`** refers to **global** object in all javascript runtime.
 
 ![demo](../assests/demo7.png)
+
+> app.js
+```js
+console.log(globalThis === global)
+```
+
+```cmd
+true
+```
