@@ -18,6 +18,8 @@ node
 > [!NOTE]
 > NodeJS is JS runtime Environment
 
+---
+
 ## ⭐ First Code in VS Code
 
 ```js
@@ -34,9 +36,13 @@ Namaste NodeJS
 30
 ```
 
+---
+
 ## 🔥 `window` and `this` object in browser
 
 ![demo](../assests/demo4.png)
+
+---
 
 ## ⭐ `global` Object
 
@@ -76,6 +82,8 @@ console.log(global);
 
 * V8 doesn't understand `global`. it only understands `global` when NodeJS gives access to the V8 Engine.
 
+---
+
 ### 🔥 `global` object has access to
 
 1. `clearInterval`
@@ -84,6 +92,7 @@ console.log(global);
 3. `setInterval`
 4. `setTimeout`
 
+---
 
 ### 🔥 console log `this`
 
@@ -96,6 +105,8 @@ console.log(this);
 ```
 
 ![demo](../assests/demo5.png)
+
+---
 
 ### 🔥In the Brower if we write `Window`, `this`, `self`,`frames` all of these given you the global Object.
 
@@ -123,3 +134,5 @@ console.log(globalThis === global)
 ```cmd
 true
 ```
+
+---
