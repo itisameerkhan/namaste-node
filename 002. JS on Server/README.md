@@ -18,3 +18,18 @@ V8 is Google’s open source high-performance JavaScript and WebAssembly engine,
 
 > [!NOTE]
 > V8 Engine executes the JS code to machine code.
+
+> [!NOTE]
+> NodeJS is a C++ application with V8 embedded into it.
+
+## ⭐ ECMAScript
+
+ECMAScript (ES) is a standardized scripting language specification that serves as the foundation for JavaScript and other similar languages. ECMAScript defines the syntax, types, objects, and functionalities of a scripting language, ensuring that implementations like JavaScript maintain consistency and compatibility.
+
+**JavaScript engines like V8 (by Google), SpiderMonkey (by Mozilla), Chakra (by Microsoft), and JavaScriptCore (by Apple) adhere to the ECMAScript standard to ensure consistent behavior of JavaScript code across different environments and platforms.**
+
+Adherence to ECMAScript ensures that JavaScript code behaves the same way across different environments (browsers, Node.js, etc.), providing a consistent experience for developers and users.
+
+## ⭐ V8 Engine is a C++ code?
+
+![demo](../assests/demo1.png)
