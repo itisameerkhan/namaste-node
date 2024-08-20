@@ -307,3 +307,22 @@ ReferenceError: a is not defined
 ```
 
 ---
+
+### ⚡ Import `.json` file 
+
+```json
+// data.json
+
+{
+  "name": "Ameer khan",
+  "city": "Tenkasi",
+  "country": "India"
+}
+```
+
+```js
+const data = require("./data.json");
+
+console.log(JSON.stringify(data));
+console.log(data)
+```
