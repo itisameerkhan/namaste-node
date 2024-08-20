@@ -188,3 +188,122 @@ module.exports = { x, calculateSum };  ✅
 ```
 
 ---
+
+## ⭐ `.cjs` and `.mjs` Modules
+
+### ⚡ CommonJS Module (.cjs)
+
+* CommonJS (CJS) is the original module system used in Node.js.
+
+* To export something from a module, you use `module.exports` or `exports`.
+
+* To import a module, you use the `require` function.
+
+* Synchronous loading
+
+* non-strict mode
+
+
+
+#### 💻 Exports
+
+```js
+module.exports = someFunction;
+```
+
+```js
+module.exports = { x, someFunction }
+```
+
+```js
+module.exports.x = x;
+module.exports.someFunction = someFunction;
+```
+
+#### 💻 Imports
+
+```js
+require("./sum.js");
+```
+
+```js
+const { x, someFunction } = require("./sum.js")
+```
+
+---
+
+### ⚡ ECMAScript Modules (ESM or MJS)
+
+* by default used in React, Angular, (etc)
+
+* To export something from a module, you use the `export` keyword.
+
+* To import a module, you use the `import` keyword.
+
+* Asynchronous loading
+
+* strict mode
+
+```json
+// package.json
+
+{
+    "type": "module"
+}
+```
+
+#### 💻 Exports
+
+```js
+export function someFunction() {
+    console.log("hello world");
+}
+
+export const x = 10;
+```
+
+```js
+function someFunctionm() {
+    console.log("hello world");
+}
+
+const x = 10;
+
+export { someFunction, x }
+```
+
+#### 💻 Imports
+
+```js
+import { someFunction, x } from "./sum.js"
+```
+
+---
+
+### ⚡ non-strict mode in `CommonJS`
+
+```js
+a = 10
+
+console.log(a);
+```
+
+#### 💻 output
+
+```cmd
+10
+```
+
+### ⚡ strict mode in `module`
+
+```js
+a = 10                                                                    ❌
+```
+
+#### 💻 output
+
+```cmd
+ReferenceError: a is not defined
+```
+
+---
