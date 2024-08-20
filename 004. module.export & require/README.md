@@ -24,6 +24,8 @@ message from xyz
 message from app.js
 ```
 
+---
+
 ### ⚡Importing a function from another module
 
 ```js
