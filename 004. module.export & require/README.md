@@ -54,3 +54,40 @@ calculateSum(10,20);
 
 ReferenceError: calculateSum is not defined
 ```
+
+---
+
+
+```js
+// sum.js
+
+console.log("sumjs module executing");
+
+function calculateSum(a, b) {
+  const sum = a + b;
+  console.log(sum);
+}
+```
+
+```js
+// app.js
+
+require("./sum.js");
+
+console.log("message from app")
+calculateSum(10,20);
+```
+
+#### 💻 Output
+
+```cmd
+sumjs module executing
+
+calculateSum(10,20);
+^
+
+ReferenceError: calculateSum is not defined
+```
+
+> [!NOTE]
+> we cannot simply import function from one module to another module simply by `require`
