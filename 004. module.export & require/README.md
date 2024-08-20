@@ -297,7 +297,7 @@ console.log(a);
 ### ⚡ strict mode in `module`
 
 ```js
-a = 10                                                                    ❌
+a = 10   ❌
 ```
 
 #### 💻 output
