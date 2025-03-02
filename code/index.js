@@ -1,10 +1,26 @@
+const fs = require("fs");
+const https = require("https");
+
+console.log("hello world");
+
 var a = 10;
 var b = 20;
 
-const multiplyFunction = (a, b) => {
+const addFunction = (a, b) => {
   return a + b;
-};
+}
 
-const result = multiplyFunction(10, 20);
+https.get('https://fakestoreapi.com/products/1', (res) => {
+  console.log("data fetched successfully");
+});
 
+setTimeout(() => {
+  console.log("im timer");
+}, 5000);
+
+fs.readFile("./file.txt", "utf8", (err, data) => {
+  console.log(data);
+})
+
+const result = addFunction(a, b);
 console.log(result);
