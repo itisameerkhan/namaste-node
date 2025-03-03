@@ -52,5 +52,19 @@ VariableDeclaration
 ![demo](../assests/demo10.png)
 
 > [!IMPORTANT]
-> JS is Interpreted or compiled language
+> JS is Interpreted or compiled language //
 > answer: Both
+
+| Interpreted | Compiled |
+| --------- | --------- |
+| Executed line by line | First compliation, high-level code converted into low-level machine code |
+| fast initial execution| initial heavy but executed fast |
+| interpreter is there | compiler is there  |
+
+## ⭐ JIT - Just In Time compiler 
+
+A Just-In-Time (JIT) Compiler in JavaScript is a hybrid approach that combines interpretation and compilation to optimize code execution dynamically at runtime.
+
+In the V8 engine (used in Node.js and Chrome), the JIT compiler converts frequently executed JavaScript code into highly optimized machine code to improve performance.
+
+![demo](../assests/demo11.png)
