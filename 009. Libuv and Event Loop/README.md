@@ -19,3 +19,109 @@ Even though JavaScript is single-threaded, the event loop allows Node.js to perf
 * It is responsible for handling I/O operations using multiple threads, even though Node.js runs JavaScript in a single thread.
 
 ![demo](../assests/demo12.png)
+
+```js
+const a = 100;
+
+setImmediate(() => console.log("setImmediate"));
+
+fs.readFile("./file.txt", "utf8", () => {
+    console.log("file reading CB");
+});
+
+setTimeout(() => console.log("time expired"), 0);
+
+function printA() {
+    console.log("a =", a);
+}
+
+printA();
+
+console.log("Last line of the file");
+```
+
+### output
+
+```
+a = 100
+Last line of the file
+timer expired
+setImmediate
+file reading CB
+```
+
+-----
+
+```js
+const a = 100;
+
+setImmediate(() => console.log("setImmediate"));
+
+Promise.resolve(() => console.log("promise"))
+
+fs.readFile("./file.txt", "utf8", () => {
+    console.log("file reading CB");
+});
+
+setTimeout(() => console.log("timer expired"), 0);
+
+process.nextTick(() => console.log("process.nextTick"));
+
+function printA() {
+    console.log("a =", a);
+}
+
+printA();
+
+console.log("Last line of the file");
+```
+
+### output 
+
+```
+a = 100
+Last line of the file 
+process.nextTick()
+Promise
+timer expired
+setImmediate
+File reading CB
+```
+
+```js
+setImmediate(() => console.log("setImmediate"));
+
+setTimeout(() => console.log("timer expired"), 0);
+
+Promise.resolve(() => console.log("promise"))
+
+fs.readFile("./file.txt", "utf8", () => {
+
+    setTimeout(() => console.log("2nd timer"), 0);
+
+    process.nextTick(() => console.log("2nd nextTick"));
+
+    setImmediate(() => console.log("2nd setImmediate"));
+
+    console.log("file reading CB");
+});
+
+
+process.nextTick(() => console.log("nextTick"));
+
+console.log("Last line of the file");
+```
+
+### output 
+
+```
+last line of the file 
+nextTick
+promise
+timer expired
+setImmediate
+file reading CB
+2nd nextTick
+2nd setImmediate
+2nd timer 
+```
