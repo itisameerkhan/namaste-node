@@ -137,3 +137,63 @@ app.get("/api/verify", async(req, res) => {
     const decodedValue = jwt.verify(token, "secret-key");
 })
 ```
+
+### ⚡ Middleware for Authentication using jsonwebtoken
+
+```js
+import jwt from "jsonwebtoken";
+import { User } from "../models/user.js";
+
+export const userAuth = async (req, res, next) => {
+  try {
+    const cookies = req.cookies;
+
+    const { token } = cookies;
+
+    if (!token) {
+      throw new Error("invalid token");
+    }
+
+    const decodedObj = jwt.verify(token, "secret-key");
+    const { _id } = decodedObj;
+
+    const user = await User.findById(_id);
+    if (!user) {
+      throw new Error("user does not exist");
+    }
+
+    req.user = user;
+    
+    next();
+
+  } catch (e) {
+    res.status(400).json({
+      success: false,
+      message: "something went wrong",
+      error: e.message,
+    });
+  }
+};
+```
+
+### ⚡ Schema level token validation
+
+```js
+userSchema.methods.getJWT = async function() {
+
+  const user = this;
+  const token = jwt.sign({_id: user._id}, "secret-key", {
+    expiresIn: "7d"
+  });
+
+  return token;
+}
+```
+
+#### validating password
+
+```js
+userSchema.methods.validatePassword = async function(inputPassword) {
+  return await bcrypt.compare(inputPassword, this.password);
+}
+```
