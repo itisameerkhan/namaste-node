@@ -326,3 +326,50 @@ const data = require("./data.json");
 console.log(JSON.stringify(data));
 console.log(data)
 ```
+
+---
+
+## ⭐ Creating own module 
+
+```js
+// /calculate/sum.js
+
+const sum = (a,b) => {
+    return a + b;
+} 
+
+module.exports = sum;
+```
+
+```js
+// /calculate/multiply.js
+
+const multiply = (a, b) => {
+    return a * b;
+}
+
+module.exports = multiply;
+```
+
+```js
+// /calculate/index.js
+
+const multiply = require("./multiply.js");
+const sum = require("./sum.js");
+
+module.exports = { multiply, sum };
+```
+
+
+```js
+// app.js
+
+const { multiply, sum } = require("./calculate");
+
+console.log(multiply(1, 2));
+console.log(sum(1, 2));
+```
+
+![demo](../assests/demo18.png)
+
+we can able to call `multiply` and `sum` function from the `calculate/index.js` without particular `index.js`.
