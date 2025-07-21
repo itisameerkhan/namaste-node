@@ -17,7 +17,15 @@ In Node.js, each JavaScript file (or module) is treated as a separate module. Wh
 })();
 ```
 
-### ❓Question: How are variablesand functions are private in different module ?
+## ⭐ IIFE - Immediately Invoked Function Expression
+
+* IIFE stands for Immediately Invoked Function Expression.
+
+* It's a function that runs immediately after it’s defined, without needing to be called later.
+
+* The code inside the Function will not interfere
+
+### ❓Question: How are variables and functions are private in different module ?
 
 * IIFE and `require` statement 
 
@@ -64,3 +72,11 @@ const wrapper = [
   '\n});',
 ];
 ```
+
+### ✨ Caching 
+
+* The code inside the `require` run only once.
+
+* If same modules imported more than once in another module with `require`. The executable content inside the imported module such as `console.log` will run single time. 
+
+* This is efficient way of running the application by caching
