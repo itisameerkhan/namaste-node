@@ -125,3 +125,11 @@ file reading CB
 2nd setImmediate
 2nd timer 
 ```
+
+## ⭐ EVENT LOOP WAITS IN POLL WHEN ITS IDLE    
+
+* If the event loop is idle, it will just wait in the poll phase until the callback is ready.
+
+* Once ready, it executes the callback.
+
+![demo](https://miro.medium.com/1*VUJqd6fMDEuLjIiXO3Uz0A.png)
