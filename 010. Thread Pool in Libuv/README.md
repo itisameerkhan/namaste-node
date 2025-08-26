@@ -20,3 +20,48 @@ There are extra 2 phases in the event loop cycle
 
 5. **check**: `setImmediate()` callbacks are invoked here.
 6. **close callbacks**: some close callbacks, e.g. `socket.on('close', ...)`.
+
+
+> [!NOTE]
+> One full cycle of the event loop is called **tick**
+
+---
+
+### ⚡ EVENT LOOP FROM NODE.JS
+
+```
+   ┌───────────────────────────┐
+┌─>│           timers          │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │     pending callbacks     │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │       idle, prepare       │
+│  └─────────────┬─────────────┘      ┌───────────────┐
+│  ┌─────────────┴─────────────┐      │   incoming:   │
+│  │           poll            │<─────┤  connections, │
+│  └─────────────┬─────────────┘      │   data, etc.  │
+│  ┌─────────────┴─────────────┐      └───────────────┘
+│  │           check           │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+└──┤      close callbacks      │
+   └───────────────────────────┘
+```
+
+### ⚡ EVENT LOOP FROM LIBUV
+
+![DEMO](https://docs.libuv.org/en/v1.x/_images/loop_iteration.png)
+
+    ---
+
+### ⚡ EVENT LOOP WAITS IN POLL PHASE WHEN IDLE 
+
+Here the code,
+
+```c 
+ can_sleep =
+        uv__queue_empty(&loop->pending_queue) &&
+        uv__queue_empty(&loop->idle_handles);
+```
