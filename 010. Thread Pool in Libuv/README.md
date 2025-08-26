@@ -213,3 +213,61 @@ crypto.pbkdf2(password, "salt", 500000, 50, "sha512", (err, key) => {
 #### OUTPUT
 
 ![demo](../assests/demo20.gif)
+
+
+```
+3 - CRYPTO PBKD2 DONE
+2 - CRYPTO PBKD2 DONE
+4 - CRYPTO PBKD2 DONE
+1 - CRYPTO PBKD2 DONE
+```~[WAITING FOR THREAD TO BE EMPTY]~```
+5 - CRYPTO PBKD2 DONE
+```
+
+#### ❓ CAN YOU CHANGE TO SIZE OF THREAD POOL
+
+**YES**, 
+```js
+process.env.UV_THREADPOOL_SIZE = 2
+```
+
+or in cmd prompt
+
+```
+$env:UV_THREADPOOL_SIZE=3; node threadpool.js
+```
+
+#### ⚡CONSIDER THIS CODE EXAMPLE
+
+```js
+const fs = require("fs");
+const crypto = require("crypto");
+
+process.env.UV_THREADPOOL_SIZE = 3;
+
+const password = "Password@123";
+crypto.pbkdf2(password, "salt", 500000, 50, "sha512", (err, key) => {
+  console.log("1 - CRYPTO PBKD2 DONE");
+});
+
+crypto.pbkdf2(password, "salt", 500000, 50, "sha512", (err, key) => {
+  console.log("2 - CRYPTO PBKD2 DONE");
+});
+
+crypto.pbkdf2(password, "salt", 500000, 50, "sha512", (err, key) => {
+  console.log("3 - CRYPTO PBKD2 DONE");
+});
+
+
+crypto.pbkdf2(password, "salt", 500000, 50, "sha512", (err, key) => {
+  console.log("4 - CRYPTO PBKD2 DONE");
+});
+
+crypto.pbkdf2(password, "salt", 500000, 50, "sha512", (err, key) => {
+  console.log("5 - CRYPTO PBKD2 DONE");
+});
+```
+
+#### OUTPUT
+
+![demo](../assests/demo21.gif)
