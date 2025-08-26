@@ -65,3 +65,39 @@ Here the code,
         uv__queue_empty(&loop->pending_queue) &&
         uv__queue_empty(&loop->idle_handles);
 ```
+
+---
+
+# 💚 THREAD POOL 
+
+### ⚡ Why the thread pool is needed for file system in Node.js?
+
+* Node.js is single-threaded at the JavaScript level.
+
+* OS does not provide non-blocking APIs for disk I/O on most platforms.
+(e.g., `read()` on a file blocks the calling thread until the data is read).
+
+* If Node.js did file I/O directly in the main thread, the event loop would freeze until the operation completed. That would block all JavaScript execution.
+
+**Libuv uses its thread pool to offload file system work:**
+
+```js
+const fs = require("fs");
+
+fs.readFile("big.txt", "utf8", (err, data) => {
+  console.log("Done reading file!");
+});
+```
+
+
+* `fs.readFile` is implemented using libuv.
+
+* Libuv queues a "work request" into its thread pool
+
+* A free thread from the pool executes the blocking system call.
+
+* Copies the file content into memory.
+
+* The thread signals the event loop by putting the result in the pending queue.
+
+* The event loop picks it up and runs your callback `((err, data) => {...})`.
