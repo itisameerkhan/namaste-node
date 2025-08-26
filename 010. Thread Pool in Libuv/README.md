@@ -70,6 +70,11 @@ Here the code,
 
 # 💚 THREAD POOL 
 
+![demo](../assests/demo19.png)
+
+> [!NOTE]
+> thread pool size is 4 by default
+
 ### ⚡ Why the thread pool is needed for file system in Node.js?
 
 * Node.js is single-threaded at the JavaScript level.
@@ -78,6 +83,10 @@ Here the code,
 (e.g., `read()` on a file blocks the calling thread until the data is read).
 
 * If Node.js did file I/O directly in the main thread, the event loop would freeze until the operation completed. That would block all JavaScript execution.
+
+* **ThreadPool size is 4 by default** `UV_THREADPOOL_SIZE = 4`
+
+* If 5 Async operations like file reading happens,
 
 **Libuv uses its thread pool to offload file system work:**
 
@@ -101,3 +110,33 @@ fs.readFile("big.txt", "utf8", (err, data) => {
 * The thread signals the event loop by putting the result in the pending queue.
 
 * The event loop picks it up and runs your callback `((err, data) => {...})`.
+
+---
+
+#### ❓ NodeJS is single threaded or multithreaded 
+
+* Node.js is both single-threaded and multithreaded, depending on the perspective.
+
+1. **From the JavaScript side → Single-threaded**
+
+    * Your JS code runs on a single main thread (the event loop).
+
+    * There’s only one call stack for executing your JavaScript.
+
+2. **From the libuv side → Multithreaded**
+
+    * Node.js relies on libuv, which provides:
+
+    * An event loop (single thread).
+
+    * A thread pool (default 4 worker threads, configurable up to 128).
+
+    * These worker threads handle blocking operations, such as:
+
+        * File system calls (`fs.readFile`, `fs.writeFile`, etc.).
+
+        * DNS lookups.
+
+        * Some crypto functions (`crypto.pbkdf2`, `crypto.scrypt`).
+
+        * Compression (`zlib`).
