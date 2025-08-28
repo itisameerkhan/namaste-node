@@ -69,3 +69,10 @@ And then sends back responses.
 * Whenever the client requested the server. one socket connection will made. 
 
 * which uses TCP/IP protocol, which sends data using TCP/IP protocol.
+
+### What is TCP/IP?
+
+TCP/IP (Transmission Control Protocol / Internet Protocol) is the foundation of the internet.
+It’s a set of rules (protocols) that computers use to communicate over networks (like LAN, WAN, or the Internet).
+
+Think of it as the language of the internet.
