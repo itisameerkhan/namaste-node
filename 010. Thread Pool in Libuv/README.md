@@ -292,3 +292,14 @@ NO
 ---
 
 * `epoll` is a scalable I/O event notification system.
+
+---
+
+important points to cover 
+
+1. epoll
+
+2. kqueue
+3. event emitter 
+
+---
