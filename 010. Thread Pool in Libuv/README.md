@@ -271,3 +271,24 @@ crypto.pbkdf2(password, "salt", 500000, 50, "sha512", (err, key) => {
 #### OUTPUT
 
 ![demo](../assests/demo21.gif)
+
+---
+
+#### ❓ when we are creating web server in nodejs the api uses thread pool?
+
+NO
+
+* Network APIs (HTTP, TCP, UDP, etc.) in Node.js do **NOT** use the thread pool
+
+---
+
+## ⭐ EPOLL AND KQUEUE
+
+* epoll (Linux)
+
+* kqueue (MacOS)
+
+
+---
+
+* `epoll` is a scalable I/O event notification system.
