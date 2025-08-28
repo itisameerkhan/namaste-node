@@ -303,3 +303,32 @@ important points to cover
 3. event emitter 
 
 ---
+
+> [!NOTE]
+> epoll uses **red black tree**
+
+> [!NOTE]
+> Timer queue uses **min-heap**
+
+---
+
+## 😂 `process.nextTick` VS `setImmediate` 
+
+We have two calls that are similar as far as users are concerned, but their names are confusing.
+
+### ⚡ `process.nextTick`
+
+* It is called before every phase, which happens immediately. 
+
+* `process.nextTick()` fires immediately on the same phase
+
+### ⚡ `setImmediate`
+
+* `setImmediate()` fires on the following iteration or 'tick' of the event loop
+
+* It happens in the next Tick
+
+the names should be swapped. `process.nextTick()` fires more immediately than `setImmediate()`, but this is an artifact of the past which is unlikely to change. Making this switch would break a large percentage of the packages on npm
+
+> [!IMPORTANT]
+> We recommend developers use `setImmediate()` in all cases because it's easier to reason about.
