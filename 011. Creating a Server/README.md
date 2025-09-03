@@ -70,9 +70,53 @@ And then sends back responses.
 
 * which uses TCP/IP protocol, which sends data using TCP/IP protocol.
 
-### What is TCP/IP?
+### ⚡ What is TCP/IP?
 
 TCP/IP (Transmission Control Protocol / Internet Protocol) is the foundation of the internet.
 It’s a set of rules (protocols) that computers use to communicate over networks (like LAN, WAN, or the Internet).
 
 Think of it as the language of the internet.
+
+---
+
+## ⭐ CREATING A HTTP SERVER
+
+```js
+const http = require("http");
+
+const server = http.createServer();
+
+server.listen(8080);
+```
+
+### ⚡ `res.end`
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.end("hello world")
+});
+
+server.listen(8080);
+```
+
+### ⚡ HANDLING PATH IN NODEJS
+
+```js
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  if (req.url === "/home") {
+    res.end("home");
+  }
+  res.end("hello world");
+});
+
+server.listen(8080);
+```
+![demo](https://media.licdn.com/dms/image/v2/D4D12AQFutpP9wVAeIg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1718341193276?e=2147483647&v=beta&t=em32ZEf75gBr8vAQNo5G4jFIyqZqS3Iwtv3790z0-rA)
+
+* Fast, unopinionated, minimalist web framework for `Node.js`
+
+* `Express.js` is a minimalist and flexible web application framework for Node.js.
