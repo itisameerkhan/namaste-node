@@ -94,3 +94,56 @@ So it will install:
 * **`5.1.9`** ✅
 
 But not **5.2.0** ❌ (because that’s a new MINOR version).
+
+## ⭐ CREATING A SERVER 
+
+```js
+const express = require("express");
+
+const app = express();
+
+app.listen(8080, () => {
+    console.log(`SERVER IS LISTENING TO PORT: http://localhost:8080`);
+})
+
+app.use((req, res) => {
+    res.send("HELLO FROM SERVER")
+})
+```
+
+```js
+const app = express();
+```
+
+* Here we call the `express()` function.
+
+* This creates an Express application object (`app`) which we’ll use to handle requests and define routes.
+
+* Think of `app` as your server instance.
+
+
+```js
+app.listen(8080, () => {
+    console.log(`SERVER IS LISTENING TO PORT: http://localhost:8080`);
+})
+```
+
+* `app.listen(8080, ...)` starts the server on port 8080.
+
+* The second argument is a callback function that runs once the server starts successfully.
+
+```js
+app.use((req, res) => {
+    res.send("HELLO FROM SERVER")
+})
+```
+
+* `app.use(...)` defines middleware for handling all incoming requests.
+
+* Here it takes a function `(req, res)` that runs whenever a request is received.
+
+* `req` = request object (info about the incoming request like URL, headers, etc).
+
+* `res` = response object (used to send data back to the client).
+
+* `res.send("HELLO FROM SERVER")` sends the text "HELLO FROM SERVER" back to the browser or API client.
